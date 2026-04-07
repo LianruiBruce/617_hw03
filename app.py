@@ -15,10 +15,16 @@ st.set_page_config(page_title="State Energy Lifestyle Profiles", layout="wide")
 
 SECTORS = ["Residential", "Commercial", "Industrial", "Transportation"]
 COLORS = {
-    "Residential": "#4C78A8",
-    "Commercial": "#F58518",
-    "Industrial": "#E45756",
-    "Transportation": "#72B7B2",
+    "Residential": "#2166AC",
+    "Commercial": "#E68A00",
+    "Industrial": "#D62728",
+    "Transportation": "#1B9E77",
+}
+COLORS_LIGHT = {
+    "Residential": "#C1D5F0",
+    "Commercial": "#FFD9A0",
+    "Industrial": "#FDBBBA",
+    "Transportation": "#B2E2D6",
 }
 STATE_ABBR = {
     "Alabama": "AL",
@@ -99,7 +105,7 @@ def build_outlier_table(year_df, focus_sector):
 
 
 def sector_shade_scale(sector):
-    return [[0.0, "#F4F4F4"], [1.0, COLORS[sector]]]
+    return [[0.0, COLORS_LIGHT[sector]], [1.0, COLORS[sector]]]
 
 
 df = load_data()
@@ -185,8 +191,8 @@ if map_mode == "Dominant sector":
                 z=sector_df["Dominant share"],
                 locationmode="USA-states",
                 colorscale=sector_shade_scale(sector),
-                zmin=25,
-                zmax=80,
+                zmin=20,
+                zmax=85,
                 marker_line_color="white",
                 marker_line_width=0.8,
                 text=hover_text,
@@ -275,11 +281,9 @@ if show_outliers:
     fig1.add_trace(
         go.Scatter(
             x=outlier_states["State"],
-            y=[101] * len(outlier_states),
-            mode="markers+text",
-            text=["Outlier"] * len(outlier_states),
-            textposition="top center",
-            marker=dict(symbol="star", size=10, color="#222222"),
+            y=[102] * len(outlier_states),
+            mode="markers",
+            marker=dict(symbol="star", size=12, color="#222222"),
             name=f"Top {highlight_sector} outliers",
             hovertemplate=highlight_sector + ": %{x}<extra></extra>",
         )
@@ -291,12 +295,12 @@ fig1.update_layout(
     clickmode="event+select",
     xaxis_title="State",
     yaxis_title="Share of Direct-Fuel Consumption (%)",
-    yaxis=dict(range=[0, 106]),
+    yaxis=dict(range=[0, 108]),
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
-    height=450,
-    margin=dict(t=60, b=80),
+    height=520,
+    margin=dict(t=60, b=120),
 )
-fig1.update_xaxes(tickangle=-45, tickfont_size=9)
+fig1.update_xaxes(tickangle=-45, tickfont_size=8, dtick=1)
 
 bar_event = st.plotly_chart(fig1, use_container_width=True, on_select="rerun", key="bar")
 if bar_event and bar_event.selection and bar_event.selection.points:
