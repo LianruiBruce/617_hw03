@@ -36,16 +36,19 @@ Then open [http://localhost:8501](http://localhost:8501) in your browser.
 | `energy.csv` | Raw dataset (CORGIS / EIA, 1960–2019, all states) |
 | `clean_data.py` | Data cleaning script with sector-specific Petroleum handling |
 | `state_sector_profiles.csv` | Cleaned output: 51 states × 10 years, four sector shares |
-| `app.py` | Streamlit dashboard with two coordinated views |
-| `project_notes.md` | Full design study writeup (Steps 1–7) |
+| `app.py` | Streamlit dashboard with three coordinated views and onboarding guidance |
+| `project_notes.md` | Full design study writeup (Steps 1–9) |
 | `project_notes.pdf` | PDF version of the writeup |
-| `feedback_notes.md` | Template for in-class feedback (3/31) |
+| `feedback_notes.md` | Documented in-class stakeholder feedback (3/31) |
 
 ## Dashboard Features
 
-- **View 1 — Cross-State Comparison:** 100% stacked bar chart showing Residential, Commercial, Industrial, and Transportation shares for all states in a selected year. Sortable by any sector.
-- **View 2 — Single-State Temporal Trend:** Line chart showing how a selected state's profile changes over 2010–2019.
-- **View Coordination:** Click a state bar in View 1 to update View 2.
+- **View 1 — U.S. Map:** Choropleth map showing either each state's dominant direct-fuel sector or the share of a selected sector.
+- **View 2 — Cross-State Comparison:** 100% stacked bar chart showing Residential, Commercial, Industrial, and Transportation shares for all states in a selected year. Sortable by any sector.
+- **View 3 — Single-State Temporal Trend:** Line chart showing how a selected state's profile changes over 2010–2019.
+- **View Coordination:** Click a state in the map or bar chart to update the state detail view.
+- **Outlier Highlighting:** Optional star markers and table identify the top 5 states with the highest share in a selected sector.
+- **Onboarding and Data Explanation:** The app includes a research-question panel, usage guidance, and a plain-language explanation of how raw data is aggregated into sector shares.
 
 ## Data Note
 
