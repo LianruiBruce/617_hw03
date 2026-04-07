@@ -174,14 +174,73 @@ Select a state (e.g., Texas) and examine its 2010–2019 trend:
 2. Is the relationship between the comparison view and the time view easy to understand?
 3. What additional question would you want this tool to support?
 
-### Anticipated Third Task
+### Stakeholder Feedback Summary
 
-Based on expected feedback, a likely third task is:
+The formative feedback was positive about chart clarity once the views were explained, but it surfaced three important problems for a first-time public user:
 
-- **Task 3** — Action: Identify outliers; Target: Extreme values
-- **Natural language**: Identify which states have unusual or highly imbalanced direct-fuel consumption profiles compared with others.
-- **Implementation path**: Add sorting + visual highlighting of states with extreme sector shares, giving the public a clearer discovery entry point.
+1. **The central question was not obvious enough.** Viewers asked what exact question the project was trying to answer.
+2. **The meaning of "structure" was unclear.** Stakeholders wanted a more direct explanation that the visualization shows the percentage split across Residential, Commercial, Industrial, and Transportation sectors for each state-year.
+3. **The "lifestyle" interpretation needed stronger scaffolding.** Stakeholders were unsure how a sectoral split could relate to everyday life, and they wanted the interface to make the interpretation more concrete.
 
-### Feedback Record
+The strongest design suggestion was to add a **U.S. map** so users could see national patterns more intuitively. They also wanted clearer explanation of how the raw data was processed, including whether values were summed and then normalized.
 
-Feedback will be documented in `feedback_notes.md`, including raw observations, summarized improvement directions, and the confirmed third task.
+### Confirmed Third Task
+
+- **Task 3**
+- **Action**: Identify
+- **Target**: Spatial outliers and extreme values
+- **Natural language**: Identify which states stand out as unusually Residential-heavy, Industrial-heavy, or Transportation-heavy, and see where those states appear geographically.
+
+### Iteration Changes
+
+To address that new task and reduce first-use confusion, the revised dashboard adds:
+
+1. **A choropleth map of the United States** showing either each state's dominant sector or the share of a selected sector. This gives a more intuitive national overview than the stacked bar chart alone.
+2. **Explicit onboarding text** explaining what question the dashboard answers and how to interact with it.
+3. **A data-processing explainer** describing that raw fuel columns were first summed into four sector totals and then converted into shares.
+4. **Outlier highlighting** for the top states in a selected sector, making it easier for non-expert users to spot extreme profiles.
+
+These changes make the tool better aligned with the public-facing stakeholder. The dashboard now supports both comparison and explanation, rather than assuming users already understand the data model.
+
+---
+
+## Step 8 — Reflect, Pt 1
+
+### Method for Gathering Feedback
+
+During the in-class summative evaluation on 4/7, I presented the revised dashboard to classmates acting as public stakeholders and asked them to perform short exploration tasks. I also observed where they hesitated, what they clicked first, and which parts required verbal explanation. This lightweight think-aloud style evaluation was useful because the intended audience was not domain-expert; first impressions and moments of confusion mattered as much as formal task completion.
+
+### What the Solution Tells Stakeholders
+
+The revised solution helps classmates see that states differ not only in total energy use, but also in **how that use is distributed across sectors**. The map makes broad regional differences easier to notice, while the stacked bars and temporal trend chart support follow-up questions. For example, users can observe that some Northeast states have comparatively higher Residential shares, while states such as Texas or Louisiana tend to show stronger Industrial or Transportation components. The tool therefore supports pattern discovery and comparison in a way that is more accessible to the public than raw tables or total-consumption rankings.
+
+### What Worked
+
+- The overall visual design was considered clear once users were oriented.
+- The addition of the map made the dashboard feel much more intuitive and immediately interpretable.
+- The coordinated views supported an effective overview-to-detail workflow.
+- The written guidance reduced uncertainty about whether charts and controls were interactive.
+
+### What Did Not Work as Well
+
+- The original version assumed too much prior understanding of the research question.
+- Terms such as "structure" and "lifestyle profile" were not self-explanatory to first-time viewers.
+- Some controls were not obviously clickable before labels and instructions were added.
+
+### What I Would Keep the Same
+
+I would keep the normalized-share framing, because it makes state-to-state comparison much easier for a public audience than raw totals. I would also keep the coordinated overview-and-detail design, since it matches the two core analytical tasks well.
+
+### Given More Time
+
+Given more time, I would add short annotation callouts for representative states, stronger tooltips that interpret the pattern in plain language, and optional contextual overlays connecting observed patterns to climate, transportation infrastructure, or industrial composition. That would help move the dashboard further from pattern discovery toward actionable public communication.
+
+---
+
+## Step 9 — Reflect, Pt 2
+
+This design study showed that designing visualizations for a public audience requires more than choosing appropriate charts. Even when the charts themselves are readable, users may still be unsure what question the visualization answers, what the visual encoding represents, and how to begin interacting with it. In this project, the biggest lesson was that explanatory framing is part of the visualization design, not an optional extra.
+
+I also learned that coordinated views are especially valuable when the domain is unfamiliar. The map offered an approachable entry point, the stacked bars enabled comparison, and the temporal chart provided detail. Together, these views supported different stages of reasoning. However, the study also reinforced that interaction must be signposted clearly; users should not have to guess which marks or controls are clickable.
+
+More broadly, the process highlighted how strongly stakeholder feedback shapes design. My initial solution emphasized analytical comparison, but the stakeholder pushed the project toward interpretability, guidance, and geographic context. That shift improved the design substantially. For this target problem, the most effective visualization process was not simply to encode the data accurately, but to iteratively build an interface that helps non-expert viewers understand what they are looking at and why it matters.
