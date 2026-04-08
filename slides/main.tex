@@ -27,114 +27,128 @@
 \end{frame}
 
 
-%% Slide 2: Step 1 --- Learning
+%% ====== PRECONDITION ======
 \section{Precondition}
+
+%% Slide 2: Learning
 \begin{frame}
     \frametitle{Step 1 --- Learning}
 
-    \textbf{Question:}
-    Do U.S.\ states exhibit different \alert{lifestyle profiles} through their energy consumption structures?
+    \textbf{Research question:}
+
+    \bigskip
+
+    {\large Do U.S.\ states have different \alert{lifestyle profiles} based on how they use energy?}
+
+    \bigskip
+    \bigskip
+
+    \begin{itemize}
+        \item Total rankings hide \emph{how} energy is used
+        \item Four sectors: Residential, Commercial, Industrial, Transportation
+        \item Stakeholder: general public \& community advocates
+    \end{itemize}
+\end{frame}
+
+
+%% Slide 3: Winnowing — Data
+\begin{frame}
+    \frametitle{Step 2 --- Winnowing: Data Source}
+
+    \begin{block}{Source}
+        CORGIS / U.S.\ EIA SEDS --- 51 states, 2010--2019
+    \end{block}
+
+    \bigskip
+
+    \textbf{Columns used per sector:}
+    \begin{itemize}
+        \item Coal, Natural Gas, Petroleum, Wood, Geothermal, \ldots
+        \item Summed into 4 sector totals, then normalized to \textbf{\% shares}
+    \end{itemize}
+
+    \bigskip
+
+    \textbf{Why necessary \& sufficient:}
+    \begin{itemize}
+        \item State + Year identify each row
+        \item 4 shares define the profile; \% removes state-size effect
+    \end{itemize}
+\end{frame}
+
+
+%% Slide 4: Winnowing — Limitations
+\begin{frame}
+    \frametitle{Step 2 --- Winnowing: Limitations}
 
     \bigskip
 
     \begin{itemize}
-        \item Total rankings hide \emph{how} energy is used day-to-day
+        \item \alert{Direct-fuel only} --- grid electricity is excluded
 
-        \medskip
-        \item Sector breakdown (Residential, Commercial, Industrial, Transportation) reveals structural patterns that totals obscure
+        \bigskip
+        \item States that heat with electricity (e.g.\ Florida) appear lower in Residential share
 
-        \medskip
-        \item \textbf{Stakeholder:} general public \& community advocates who want an intuitive way to compare states beyond aggregate numbers
+        \bigskip
+        \item Missing or very small values recorded as 0 in source data
     \end{itemize}
 \end{frame}
 
 
-%% Slide 3: Step 2 --- Winnowing
-\begin{frame}
-    \frametitle{Step 2 --- Winnowing}
-
-    \begin{block}{Source}
-        CORGIS / U.S.\ EIA SEDS \quad---\quad 51 states, 2010--2019
-    \end{block}
-
-    \medskip
-
-    \textbf{Columns used (per sector):}
-    \begin{itemize}
-        \item Coal, Natural Gas, Petroleum, Wood, Geothermal, etc.
-        \item Summed into 4 sector totals $\rightarrow$ normalized to \textbf{\% shares}
-    \end{itemize}
-
-    \medskip
-
-    \textbf{Why necessary \& sufficient:}
-    \begin{itemize}
-        \item State + Year identify each unit; 4 sector shares define the profile
-        \item Shares remove state-size effect, enabling fair comparison
-    \end{itemize}
-
-    \medskip
-
-    \textbf{Bias:} \alert{Direct-fuel only} --- electric-heating states appear lower in Residential; missing values coded as 0
-\end{frame}
-
-
-%% Slide 4: Step 3 --- Discover
+%% ====== CORE ======
 \section{Core}
-\begin{frame}
-    \frametitle{Step 3 --- Discover}
 
-    \textbf{Process:} Stakeholder wants to compare states (horizontal) and check stability (longitudinal) $\rightarrow$ two core tasks; Task 3 added after iteration feedback
+%% Slide 5: Discover
+\begin{frame}
+    \frametitle{Step 3 --- Discover: Tasks}
+
+    Stakeholder needs: compare states + check stability over time
 
     \bigskip
 
     \begin{block}{Task 1 --- Cross-State Comparison}
-        \textbf{Action:} Compare \quad \textbf{Target:} Distribution \\
-        Compare sector share profiles across all states in a selected year
+        \textbf{Action:} Compare \quad \textbf{Target:} Distribution
     \end{block}
 
-    \medskip
+    \bigskip
 
     \begin{block}{Task 2 --- Temporal Trend}
-        \textbf{Action:} Identify trends \quad \textbf{Target:} Change over time \\
-        Track how one state's profile shifts over 2010--2019
+        \textbf{Action:} Identify trends \quad \textbf{Target:} Change over time
     \end{block}
 
-    \medskip
+    \bigskip
 
-    \begin{block}{Task 3 --- Spatial Outliers \small{(from iteration)}}
-        \textbf{Action:} Identify \quad \textbf{Target:} Outliers / spatial patterns \\
-        Find extreme-share states and locate them geographically
+    \begin{block}{Task 3 --- Spatial Outliers {\small(added after feedback)}}
+        \textbf{Action:} Identify \quad \textbf{Target:} Outliers
     \end{block}
 \end{frame}
 
 
-%% Slide 5: Step 4 --- Design
+%% Slide 6: Design
 \begin{frame}
-    \frametitle{Step 4 --- Design}
+    \frametitle{Step 4 --- Design: Low-fi Prototype}
 
     \begin{columns}[T]
-        \begin{column}{0.50\textwidth}
+        \begin{column}{0.52\textwidth}
             \includegraphics[width=\textwidth]{images/sketch.jpg}
         \end{column}
-        \begin{column}{0.46\textwidth}
-            \textbf{Justifications:}
+        \begin{column}{0.44\textwidth}
             \begin{itemize}
-                \item Stacked bar $\rightarrow$ supports Task 1 (compare distributions)
-                \item Line chart $\rightarrow$ supports Task 2 (trends)
-                \item Click bar to update detail $\rightarrow$ overview-to-detail workflow
-                \item \% shares over raw totals $\rightarrow$ easier for public audience
+                \item Stacked bar $\rightarrow$ Task 1
+                \item Line chart $\rightarrow$ Task 2
+                \item Click bar $\rightarrow$ update detail
+                \item \% shares for public audience
             \end{itemize}
 
-            \medskip
+            \bigskip
 
-            \textbf{Trade-off:} middle segments hard to compare; sorting \& tooltips mitigate
+            \textbf{Trade-off:} middle segments harder to read; sorting \& tooltips help
         \end{column}
     \end{columns}
 \end{frame}
 
 
-%% Slide 6: Step 5 --- Implement (Map)
+%% Slide 7: Implement — Map
 \begin{frame}
     \frametitle{Step 5 --- Implement: Map View}
 
@@ -143,11 +157,12 @@
     \end{center}
 
     \smallskip
-    \centering\small Streamlit + Plotly + Pandas \quad|\quad Choropleth addresses Task 3 (spatial outliers)
+    \centering\small Streamlit + Plotly \quad|\quad
+    Choropleth supports Task 3
 \end{frame}
 
 
-%% Slide 7: Step 5 --- Implement (Bar & Line)
+%% Slide 8: Implement — Bar & Line
 \begin{frame}
     \frametitle{Step 5 --- Implement: Bar \& Trend Views}
 
@@ -158,51 +173,69 @@
         \end{column}
         \begin{column}{0.50\textwidth}
             \includegraphics[width=\textwidth]{images/dashboard03.png}
-            \centering\small Task 2: temporal trend (California)
+            \centering\small Task 2: temporal trend
         \end{column}
     \end{columns}
 
     \bigskip
 
-    \centering\small Beyond defaults: custom palette, sortable axis, coordinated views, onboarding text
+    \centering Click map or bar $\rightarrow$ line chart updates
 \end{frame}
 
 
-%% Slide 8: Steps 6 & 7 --- Deploy & Iterate
+%% Slide 9: Deploy
 \begin{frame}
-    \frametitle{Steps 6 \& 7 --- Deploy \& Iterate}
+    \frametitle{Step 6 --- Deploy: Observations}
 
-    \textbf{Stakeholder observations during deployment:}
+    \textbf{Stakeholder observations:}
+
+    \bigskip
+
     \begin{itemize}
-        \item Northeast (Maine, Vermont): higher Residential share --- direct-fuel heating
-        \item Gulf states (TX, LA): stronger Industrial \& Transportation
+        \item Northeast (Maine, Vermont): higher Residential share
+
+        \bigskip
+        \item Gulf states (Texas, Louisiana): stronger Industrial \& Transportation
+
+        \bigskip
         \item Most profiles stable over 2010--2019
     \end{itemize}
-
-    \bigskip
-
-    \textbf{Formative feedback (3/31):}
-    \begin{itemize}
-        \item Research question not obvious at first glance
-        \item Need a \alert{U.S.\ map} for spatial context
-    \end{itemize}
-
-    \bigskip
-
-    \textbf{Response:} Added choropleth map, onboarding text, outlier highlights $\rightarrow$ Task 3
 \end{frame}
 
 
-%% Slide 9: Step 8 --- Reflect Pt 1
+%% Slide 10: Iterate
+\begin{frame}
+    \frametitle{Step 7 --- Iterate: Feedback \& Changes}
+
+    \textbf{In-class feedback (3/31):}
+
+    \bigskip
+
+    \begin{itemize}
+        \item Research question not obvious at first glance
+        \item Wanted a \alert{U.S.\ map} for spatial context
+    \end{itemize}
+
+    \bigskip
+    \bigskip
+
+    \textbf{Our response:}
+    \begin{itemize}
+        \item Added choropleth map
+        \item Added onboarding text \& outlier highlights
+        \item Defined Task 3 from this feedback
+    \end{itemize}
+\end{frame}
+
+
+%% ====== ANALYSIS ======
 \section{Analysis}
+
+%% Slide 11: Reflect Pt 1
 \begin{frame}
     \frametitle{Step 8 --- Reflect: Evaluation}
 
-    \textbf{Method (4/7):} think-aloud exploration with classmate stakeholders
-
-    \medskip
-
-    \textbf{What the tool reveals:} States differ not just in \emph{how much} energy they use, but in \emph{how} they use it --- regional patterns emerge that totals alone cannot show
+    \textbf{Method (4/7):} think-aloud with classmate stakeholders
 
     \bigskip
 
@@ -210,7 +243,7 @@
         \begin{column}{0.46\textwidth}
             \textbf{Worked well}
             \begin{itemize}
-                \item Map immediately intuitive
+                \item Map was immediately intuitive
                 \item Coordinated views: overview $\rightarrow$ detail
             \end{itemize}
         \end{column}
@@ -218,47 +251,47 @@
             \textbf{Could improve}
             \begin{itemize}
                 \item Assumed too much prior knowledge
-                \item Controls not obviously interactive
+                \item Controls not obviously clickable
             \end{itemize}
         \end{column}
     \end{columns}
 
     \bigskip
 
-    \textbf{Future:} annotation callouts, richer tooltips, climate/infrastructure overlays
+    \textbf{Key insight:} states differ in \emph{how} they use energy, not just how much
+
+    \medskip
+
+    \textbf{Future:} richer tooltips, climate/infrastructure overlays
 \end{frame}
 
 
-%% Slide 10: Step 9 --- Reflect Pt 2
+%% Slide 12: Reflect Pt 2
 \begin{frame}
     \frametitle{Step 9 --- Reflect: Design Lessons}
 
     \begin{enumerate}
-        \item \textbf{Framing is part of the design} \\
-              Charts fail if users don't know what question they answer
+        \item \textbf{Framing is part of the design}
 
         \bigskip
         \bigskip
 
-        \item \textbf{Coordinated views help unfamiliar domains} \\
-              Map $\rightarrow$ bars $\rightarrow$ line guided different reasoning stages
+        \item \textbf{Coordinated views help unfamiliar domains}
 
         \bigskip
         \bigskip
 
-        \item \textbf{Signpost all interactions} \\
-              Users should never guess what is clickable
+        \item \textbf{Signpost all interactions}
 
         \bigskip
         \bigskip
 
-        \item \textbf{Stakeholder feedback reshapes design} \\
-              Shifted from analytical to interpretable --- a major improvement
+        \item \textbf{Stakeholder feedback reshapes design}
     \end{enumerate}
 \end{frame}
 
 
-%% Slide 11: Thanks
+%% Slide 13: Thanks
 \begin{frame}
     \centering
 
