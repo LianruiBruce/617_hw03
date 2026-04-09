@@ -5,6 +5,14 @@ A mini design study exploring whether U.S. states exhibit different lifestyle pr
 **Course:** COMP 617 — UNC Chapel Hill  
 **Data:** [CORGIS Energy Dataset](https://corgis-edu.github.io/corgis/csv/energy/) / [U.S. EIA SEDS](https://www.eia.gov/state/seds/seds-data-complete.php)
 
+## Live Demo
+
+This project is deployed on Streamlit Community Cloud: **[https://unc617hw03.streamlit.app/](https://unc617hw03.streamlit.app/)**
+
+The hosted app runs on a **free** tier, so the first time you open it (especially after the app has been idle), the service may **cold-start** and take **at least about a minute** to become ready. If the page does not load right away, **wait and then refresh** the browser.
+
+A screen-recording walkthrough is committed in this repository: [`hw03_recording.mp4`](hw03_recording.mp4).
+
 ## Quick Start
 
 ### 1. Install dependencies
