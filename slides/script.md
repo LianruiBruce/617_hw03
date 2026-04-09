@@ -114,7 +114,7 @@ Four design lessons.
 
 First, framing is part of the design. Charts fail if users don't know the question.
 
-Second, coordinated views help when the domain is unfamiliar.
+Second, coordinated views help when the domain is unfamiliar for the audience. They will know where to start and what to do next with graphs.
 
 Third, signpost all interactions. Users should never guess what is clickable.
 
