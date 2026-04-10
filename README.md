@@ -61,3 +61,7 @@ Then open [http://localhost:8501](http://localhost:8501) in your browser.
 ## Data Note
 
 The analysis compares **direct-fuel consumption profiles** (coal, gas, petroleum, wood, etc.) and does **not** include electricity purchased via the grid. See `project_notes.md` § Step 2 for full details on aggregation rules and limitations.
+
+## Acknowledgments
+
+In class, the group we interacted with for stakeholder feedback was **Chenrui LI & Yunqi Li**'s team. Questions raised about the design and ideas for improvement came from their discussion; see also `feedback_notes.md` for the documented session.
